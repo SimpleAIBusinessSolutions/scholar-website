@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+:root {
+  --bg: #060b18;
+  --bg-elevated: #0b1730;
+  --surface: #101b33;
+  --border: #1e2b4a;
+  --text: #f5f7fa;
+  --text-dim: #8b95ac;
+  --text-dimmer: #5b6584;
+
+  --green: #22c55e;
+  --green-bright: #3ddc7a;
+  --green-deep: #16a34a;
+  --blue: #2f6bff;
+  --blue-bright: #4d82ff;
+  --blue-deep: #1d4ed8;
+
+  --font-display: var(--font-space-grotesk);
+  --font-body: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-text-dim: var(--text-dim);
+  --color-text-dimmer: var(--text-dimmer);
+
+  --color-brand-green: var(--green);
+  --color-brand-green-bright: var(--green-bright);
+  --color-brand-green-deep: var(--green-deep);
+  --color-brand-blue: var(--blue);
+  --color-brand-blue-bright: var(--blue-bright);
+  --color-brand-blue-deep: var(--blue-deep);
+
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display), system-ui, sans-serif;
+}
+
+.font-mono-nums {
+  font-family: var(--font-mono), monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Brand gradient — used sparingly, as the one bold accent */
+.brand-gradient {
+  background-image: linear-gradient(135deg, var(--green) 0%, var(--blue) 100%);
+}
+
+.brand-gradient-text {
+  background-image: linear-gradient(135deg, var(--green-bright) 0%, var(--blue-bright) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-border-glow {
+  box-shadow: 0 0 0 1px var(--border), 0 8px 40px -12px rgba(47, 107, 255, 0.25);
+}
+
+/* Circuit-trace signature animation, echoing the logo's circuit paths */
+@keyframes trace-draw {
+  from {
+    stroke-dashoffset: var(--trace-length, 1000);
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.circuit-trace path {
+  stroke-dasharray: var(--trace-length, 1000);
+  stroke-dashoffset: var(--trace-length, 1000);
+  animation: trace-draw 2.2s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+}
+
+.circuit-trace circle {
+  opacity: 0;
+  animation: node-pulse 0.6s ease-out forwards;
+}
+
+@keyframes node-pulse {
+  from {
+    opacity: 0;
+    transform: scale(0.3);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .circuit-trace path,
+  .circuit-trace circle {
+    animation: none;
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
