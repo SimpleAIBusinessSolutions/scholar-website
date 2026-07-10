@@ -40,10 +40,10 @@ export default function Footer() {
           <ul className="space-y-3 text-sm text-text-dim">
             <li>
               <a
-                href="mailto:info@scholardigitalsolutions.ie"
+                href="mailto:kevin@simpleaibusinesssolutions.ie"
                 className="hover:text-text transition"
               >
-                info@scholardigitalsolutions.ie
+                kevin@simpleaibusinesssolutions.ie
               </a>
             </li>
           </ul>

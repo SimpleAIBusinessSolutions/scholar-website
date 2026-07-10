@@ -12,12 +12,6 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-// Set NEXT_PUBLIC_DASHBOARD_URL in .env.local / Vercel env vars to your
-// dashboard's real domain once connected. Falls back to a placeholder
-// so the build doesn't break if it's not set yet.
-const DASHBOARD_URL =
-  process.env.NEXT_PUBLIC_DASHBOARD_URL || "https://scholar-dashboard-liart.vercel.app";
-
 export default function Header() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
@@ -59,12 +53,6 @@ export default function Header() {
         </nav>
 
         <div className="hidden md:flex items-center gap-3">
-          <a
-            href={`${DASHBOARD_URL}/login`}
-            className="text-sm font-medium text-text-dim hover:text-text transition px-3 py-2"
-          >
-            Login
-          </a>
           <Link
             href="/contact"
             className="brand-gradient text-bg text-sm font-semibold px-5 py-2.5 rounded-full hover:opacity-90 transition"
@@ -101,13 +89,6 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <a
-            href={`${DASHBOARD_URL}/login`}
-            onClick={() => setOpen(false)}
-            className="text-text-dim hover:text-text text-sm font-medium"
-          >
-            Login
-          </a>
           <Link
             href="/contact"
             onClick={() => setOpen(false)}
@@ -120,4 +101,5 @@ export default function Header() {
     </header>
   );
 }
+
 
