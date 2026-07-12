@@ -48,7 +48,7 @@ export default function RootLayout({
             actual dashboard domain once known (currently the .vercel.app
             URL, or dashboard.scholardigitalsolutions.ie once live) */}
         <Script
-          src="https://scholar-dashboard-liart.vercel.app/tracker.js"
+          src="https://dashboard.scholardigitalsolutions.ie/tracker.js"
           data-site-key="scholar"
           strategy="afterInteractive"
         />
