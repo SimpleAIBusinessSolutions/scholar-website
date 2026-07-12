@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Space_Grotesk, Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
@@ -42,6 +43,15 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+
+        {/* First-party analytics — replace the src origin with your
+            actual dashboard domain once known (currently the .vercel.app
+            URL, or dashboard.scholardigitalsolutions.ie once live) */}
+        <Script
+          src="https://scholar-dashboard-liart.vercel.app/tracker.js"
+          data-site-key="scholar"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
